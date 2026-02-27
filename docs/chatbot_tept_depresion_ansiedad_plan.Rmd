@@ -1,0 +1,186 @@
+---
+title: "Plan de aplicación: Chatbot de apoyo para TEPT, Depresión y Ansiedad"
+author: "Generado para Ariz0-coder"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 4
+params:
+  author: "Ariz0-coder"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Resumen rápido
+
+Aplicación móvil/web con un chatbot diseñado específicamente para apoyar a personas con Trastorno de Estrés Postraumático (TEPT), depresión y ansiedad. Ofrece técnicas basadas en evidencia (estabilización, grounding, respiración, activación conductual, CBT breve), registro de sesiones y medidas estandarizadas (PCL‑5, PHQ‑9, GAD‑7), historial longitudinal y acceso controlado para terapeutas. Incluye pautas específicas para compartir datos anónimos en el repositorio correspondiente.
+
+# Principios clínicos y de diseño (trauma‑informed)
+
+- Seguridad primero: lenguaje no intrusivo, opciones para pausar/terminar la sesión, recordatorios de recursos de emergencia.
+- Control del usuario: siempre pedir consentimiento explícito para compartir datos con terapeutas o para exportar información.
+- Prevención de re‑traumatización: evitar preguntas que requieran relatar detalles traumáticos; priorizar técnicas de estabilización.
+- Brevedad y elección: ofrecer intervenciones breves (1–10 min) y dejar opciones claras.
+- Validación y normalización: respuestas que validen la experiencia y normalicen reacciones.
+- Colaboración clínica: todo contenido clínico validado por profesional(es) de salud mental.
+
+# Objetivos y usuarios
+
+- Pacientes: recibir apoyo inmediato, practicar técnicas, trackear evolución y compartir con su terapeuta.
+- Terapeutas: acceso bajo consentimiento a historial, tendencias y scores estandarizados.
+- Investigadores/compartición de datos: exportar conjuntos anónimos y bien documentados para el repositorio público según políticas de privacidad y ética.
+- Administrador: gestión de cuentas, cumplimiento legal y auditoría.
+
+# MVP enfocado en TEPT, depresión y ansiedad — funcionalidades
+
+Paciente
+- Registro seguro y consentimiento específico (uso clínico/compartición anónima).
+- Chat guiado y menú de estados: opciones que incluyan "Recuerdos/Flashbacks", "Ataque de pánico", "Tristeza profunda", "Insomnio", etc.
+- Evaluaciones estandarizadas integradas: PCL‑5 (TEPT), PHQ‑9 (depresión), GAD‑7 (ansiedad) con historiales y alertas por umbrales.
+- Biblioteca de intervenciones: estabilización (grounding), respiración, PMR, activación conductual, técnicas de afrontamiento ante intrusiones, higiene del sueño.
+- Guardado automático de sesiones con pre/post scores (auto‑reporte) y etiquetas clínicas.
+- Modo de seguridad/pausa (botón de "detener" visible).
+- Recursos y plan de seguridad (incluye números locales de emergencia, líneas de ayuda).
+
+Terapeuta
+- Invitación y flujo de consentimiento del paciente (control granular: ver sesiones, medir scores, notas privadas).
+- Dashboard por paciente: trendlines de PCL‑5/PHQ‑9/GAD‑7, sesiones importantes, flags de riesgo.
+- Notas privadas y posibilidad de añadir recomendaciones.
+- Exports (CSV/JSON) con control y registro de acceso.
+
+Investigación / Repositorio
+- Herramientas para anonimizar y preparar datos (scripts) para subir al repositorio público.
+- Metadatos obligatorios y plantillas README para cada dataset anónimo (procedimiento de anonimización, consentimientos, versión de escala).
+
+# Técnicas y guiones (basados en evidencia) — cuándo ofrecerlas
+
+- Estabilización / Grounding (5-4-3-2-1): para flashbacks o disociación inmediata.
+  - Guión breve: "Si ahora te sientes abrumado, intenta enfocarte en el presente: nombra 5 cosas que ves, 4 que puedes tocar..."
+  - Duración: 1–3 min.
+  - Indicado si hay síntomas de disociación o alta ansiedad.
+
+- Respiración diafragmática / ritmo (4-4-6 o 4-4-8 suave): para ataques de pánico y ansiedad aguda.
+  - Duración: 2–5 min.
+
+- Relajación Muscular Progresiva (PMR) abreviada: para tensión física crónica.
+  - Duración: 7–10 min.
+
+- Activación Conductual (behavioral activation) para depresión:
+  - Micro‑tareas (15–30 min) planificadas y estructuradas, registro de logros.
+  - Duración: sesión breve de planificación 5–10 min.
+
+- Técnicas CBT breves (reestructuración cognitiva) para pensamientos automáticos:
+  - Guión: identificar pensamiento → evidencia a favor/en contra → alternativa balanceada.
+  - Duración: 5–10 min.
+
+- Técnicas para intrusiones/flashbacks (contención y seguridad):
+  - No pedir detalles del evento; ofrecer grounding, anclaje, respiración.
+  - Si el paciente desea trabajar narrativa traumática, derivar a terapeuta cualificado.
+
+- Higiene del sueño y manejo del insomnio:
+  - Recomendaciones y plan de rutina (sleep hygiene), ejercicios de relajación nocturna.
+
+Notas clínicas:
+- No ofrecer terapias intensivas (p. ej., exposición prolongada, EMDR) como auto‑ayuda sin supervisión clínica.
+- Incluir avisos y ofrecer conexión al terapeuta si hay interés por terapia específica.
+
+# Evaluaciones estandarizadas y umbrales
+
+- PCL‑5 (20 ítems): puntuación total 0–80. Umbrales orientativos:
+  - ≥33 sospecha de TEPT (usar clínica y entrevista).
+- PHQ‑9 (0–27):
+  - 5–9 leve, 10–14 moderado, 15–19 moderadamente severo, ≥20 severo.
+  - Item 9 (ideación suicida) requiere protocolo de riesgo si >0.
+- GAD‑7 (0–21):
+  - 5 leve, 10 moderado, 15 grave.
+
+Implementación:
+- Al completar cuestionarios, mostrar tendencias y generar flags automáticos.
+- Registrar fecha, versión de escala y idioma.
+
+# Flujo conversacional ejemplo (escenarios críticos)
+
+1) Usuario: "Tuve un flashback, estoy en el trabajo y me siento desconectado"
+- Bot (trauma‑informed): "Siento que estés pasando eso ahora. ¿Quieres una técnica rápida para volver al presente o prefieres que te dé recursos para después?"
+- Opciones: "Técnica ahora", "Recursos después", "Contactar terapeuta"
+- Si "Técnica ahora" → grounding 5-4-3-2-1 con opción de pausar.
+
+2) Usuario: "He estado muy triste y nada me motiva"
+- Bot: "Gracias por contármelo. ¿Quieres que hagamos una tarea breve y alcanzable juntos (15 minutos) para hoy?"
+- Si acepta → activación conductual (plan paso a paso) y seguimiento en 24–48 h.
+
+3) Usuario reporta PHQ‑9 item 9 > 0:
+- Bot activa protocolo de riesgo: evaluación breve, mostrar recursos de emergencia, ofrecer conexión a terapeuta, y (si el usuario consiente) notificar al terapeuta y registrar en safety_flags.
+
+# Modelo de datos — campos relevantes para TEPT / depresión / ansiedad
+
+- users (id, pseudonym, email_hash, role, created_at)
+- profiles (user_id, dob_year_bucket, gender, timezone, preferences, consent flags)
+- assessments (id, user_id, type {PCL5,PHQ9,GAD7}, items JSONB, total_score, completed_at)
+- sessions (id, user_id, technique_id, pre_score, post_score, notes, duration_seconds, created_at)
+- techniques (id, name, script_text, audio_url, indications)
+- therapist_access (therapist_id, patient_id, consent_given_at, scope)
+- safety_flags (id, session_id, user_id, flag_type, details, action_taken, created_at)
+- anonymized_exports (id, generated_by, fields_included, salt_hash, created_at)
+
+## Esquema SQL incluido en repo: db/schema_tept.sql
+
+# API / Endpoints clave (ejemplos)
+
+- POST /auth/register
+- POST /auth/login
+- GET /assessments/{user_id}
+- POST /assessments (payload incluir items y tipo: PCL5/PHQ9/GAD7)
+- GET /techniques
+- POST /sessions (guardar sesión con pre/post)
+- POST /safety/flag (crear flag y activar flujo)
+- POST /therapists/{therapistId}/request-access
+- GET /users/{id}/export-anonymized (genera paquete para repositorio con salt/hashing)
+
+# Seguridad, privacidad y ética (imprescindible)
+
+- Consentimiento informado y versionado; registro de cuándo y qué aceptó el usuario.
+- Minimizar datos: usar pseudónimos, hashear emails y eliminar PII antes de exportar.
+- Anonimización robusta: eliminación/agrupamiento de fechas (usar buckets), k‑anonymity y differential privacy para exportes públicos.
+- Protocolos claros para flags de riesgo y responsabilidad legal (notificar terapeuta solo con consentimiento salvo excepción legal).
+- Cumplimiento regional: GDPR, CCPA, HIPAA según jurisdicción; firmar BAA con proveedores si aplica.
+- Logs de auditoría (audit_logs) con acceso restringido.
+
+# Preparación de datos para el repositorio
+
+Recomendaciones prácticas para subir datasets anónimos:
+- Incluir README por dataset con criterios de inclusión, versiones de escalas, idioma, procedimiento de anonimización y consentimientos.
+- Eliminar PII y agrupar fechas.
+- No incluir texto libre sensible sin revisión clínica y anonimización manual.
+
+# Roadmap y estimado de tiempo (equipo pequeño)
+
+- Equipo sugerido: 1–2 frontend, 1 backend, 1 diseñador UX (trauma‑informed), 1 clínico/psicólogo (part‑time), 1 QA.
+- Sprints 2 semanas:
+  - Sprint 0: requisitos, guiones clínicos y wireframes.
+  - Sprint 1: auth, datos de usuario y assessments (PHQ9/GAD7/PCL5).
+  - Sprint 2: chat básico + grounding y respiración + guardado sesiones.
+  - Sprint 3: historial y dashboard de tendencias.
+  - Sprint 4: consent flows, terapia acceso y safety flows.
+  - Sprint 5: anonimización y export para repositorio, tests y despliegue.
+
+# Tareas iniciales (issues sugeridos)
+
+- Crear repositorio y estructura monorepo (mobile/, web/, api/, tools/).
+- Implementar autenticación y roles con flows de consentimiento.
+- Implementar modelos y endpoints para PHQ9, GAD7, PCL5.
+- Implementar chat UI con intents de crisis y grounding.
+- Implementar guardado de sesiones y safety_flags.
+- Crear scripts de anonimización y plantilla README para datasets en el repo.
+- Coordinar revisión clínica de guiones y flujos de crisis.
+- Tests unitarios y E2E para flows críticos (safety, consent, export).
+
+# Siguientes pasos
+
+Puedo:
+- Crear la rama `add-plan-and-templates`, añadir estos archivos y abrir un PR hacia `main`/`master`.
+- O darte los comandos git para que lo hagas localmente.
+- O solo añadir los archivos de documentación al directorio `docs/`.
