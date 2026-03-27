@@ -35,4 +35,4 @@ Confirmación de que todos los participantes dieron consentimiento explícito pa
 Información de contacto del equipo responsable (email institucional) y declaración de que un profesional clínico revisó el dataset.
 
 ## Licencia y uso
-Indicar licencia y condiciones (p. ej., uso solo con fines de investigación, prohibida reidentificación).
+uso solo con fines de investigación, prohibida reidentificación
