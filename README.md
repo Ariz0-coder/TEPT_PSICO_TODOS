@@ -1,2 +1,2 @@
 # TEPT_PSICO_TODOS
-Aquí vamos a subir todos los datos de manera anónima para poder compartir datos de pacientes con TEPT y así que todos puedan ver y entender diferentes ambientes en donde se encuentren.
+Vamos a subir nuestros datos para una aplicación que ayudara tanto a los pacientes con Trastorno de Estres Post-traumatico y con esto también a los terapeutas para que puedan tener una visión más cruda de como su paciente esta sobrellevando su trastorno en el dia a dia y así poder ayudarlos cambiando un poco su tratamiento o para reforzar que es ese el que realmente les esta ayudando
